@@ -1,0 +1,67 @@
+﻿@model TaskManagers.Models.TASK
+
+@{
+    ViewBag.Title = "UpdateTask";
+}
+
+<h2>Update Task</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal shadow-box" style="width: 60%; margin: 0 auto;">
+        <h4 class="text-center text text-blue">Update TASK</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TaskID)
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group row">
+            <div class="col-md-6 mx-auto" style="text-align: center;">
+                <input type="submit" value="Update Now" class="btn btn-success btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .shadow-box {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    .btn-success {
+        background-color: darkgreen;
+        color: white;
+    }
+
+    .form-horizontal {
+        margin: 0 auto;
+    }
+
+    .btn-block {
+        width: 60%;
+    }
+</style>

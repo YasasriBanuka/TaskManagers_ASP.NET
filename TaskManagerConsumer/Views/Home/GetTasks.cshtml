@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TaskManagers.Models.TASK>
+
+@{
+    ViewBag.Title = "GetTasks";
+}
+<br />
+
+<h2 class="text-center" style="color: darkblue;">ALL AVAILABLE TASKS</h2>
+
+
+<br />
+<p>
+    @Html.ActionLink("Add New Task", "AddTask", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.TaskID)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="text-center">Action</th> <!-- Centered this header -->
+        </tr>
+    </thead>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.TaskID)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Update Task ", "UpdateTask", new { id = item.TaskID }, new { @class = "btn btn-success", style = "background-color: darkgreen;" }) |
+                    @Html.ActionLink("Delete Task", "DeleteTask", new { id = item.TaskID }, new { @class = "btn btn-danger", style = "background-color: darkred;" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

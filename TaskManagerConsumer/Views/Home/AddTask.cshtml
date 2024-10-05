@@ -1,0 +1,78 @@
+﻿@model TaskManagers.Models.TASK
+
+@{
+    ViewBag.Title = "AddTask";
+}
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+<br />
+<a href="~/Views/Home/Login.cshtml">~/Views/Home/Login.cshtml</a>
+<br />
+
+<div class="form-horizontal shadow-box" style="width: 60%; margin: 0 auto;">
+    <h4 class="text-center text text-blue">ADD NEW TASK</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group row">
+
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.TaskID, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.TaskID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <div class="form-group row">
+        <div class="col-md-10 offset-md-2" style="text-align: center;">
+            <input type="submit" value="Create" class="btn btn-primary btn-block" />
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .shadow-box {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+    }
+
+    .form-horizontal {
+        margin: 0 auto;
+    }
+
+    .btn-block {
+        width: 100%; /* Make the button take full width */
+    }
+
+    .btn-secondary {
+        margin-top: 10px;
+    }
+</style>
